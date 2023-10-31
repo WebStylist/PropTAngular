@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.7/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .content-wrapper {
+            flex-grow: 1;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-attachment: fixed;
+            background-size: cover;
+            margin-top: 50px; /* Adjust this value based on your header height */
+        }
+
+        .logo-img {
+            max-height: 50px; /* Adjust the height as needed */
+        }
+        /* Custom CSS for the sidebar buttons */
+        .vertical-buttons {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .vertical-buttons .btn {
+            margin-bottom: 8px; /* Adjust the padding as needed */
+        }
+    </style>
+</head>
+<body>
+    <div class="header bg-black py-4 fixed top-0 w-full z-50">
+        <div class="container mx-auto flex justify-between items-center">
+            
+                <img src="your-logo-image-url.png" alt="Your Logo" class="logo-img">
+            
+            <nav class="space-x-4">
+                <a href="/home" class="text-blue-400 hover:text-blue-600">Home</a>
+                <a href="/about" class="text-blue-400 hover:text-blue-600">About</a>
+                <a href="/services" class="text-blue-400 hover:text-blue-600">Services</a>
+                <a href="/contact" class="text-blue-400 hover:text-blue-600">Contact</a>
+            </nav>
+        </div>
+    </div>
+    
+    <!-- Content Section with Background Image -->
+    <div class="content-wrapper"></div>
+    
+    <div class="container mt-4">
+        <div class="row">
+            <!-- Sidebar Section -->
+            <div class="col-md-4">
+                <div class="bg-light p-3">
+                    <h2 class="text-2xl font-semibold mb-4">Contact us on</h2>
+                    <div class="vertical-buttons">
+                        <!-- <a href="https://www.instagram.com/thirumal_r01" class="fab fa-instagram">Instagram</a> -->
+                        <a href="https://www.instagram.com/thirumal_r01" class="btn btn-primary">Instagram</a>
+                        
+                        <a href="https://www.twitter.com/your-twitter-page" class="btn btn-primary">Twitter</a>
+                        <a href="https://www.meta.com/rkkiran_07" class="btn btn-primary">Meta</a>
+                        <a href="mailto:thirumalaregallagadda123@gmail.com" class="btn btn-primary">Email</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Contact Form Section -->
+            <div class="col-md-5">
+                <div class="bg-white p-3">
+                    <h2 class="text-2xl font-semibold mb-4">Contact Form</h2>
+                    <form>
+                        <div class="mb-3">
+                            <label for="firstName" class="form-label">First Name</label>
+                            <input type="text" id="firstName" name="firstName" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="lastName" class="form-label">Last Name</label>
+                            <input type="text" id="lastName" name="lastName" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" id="email" name="email" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="phone" class="form-label">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" class="form-control" required>
+                        </div>
+                        <!-- <div class="mb-3">
+                            <label for="description" class="form-label">Property Description</label>
+                            <textarea id="description" name="description" class="form-control" rows="5" required></textarea>
+                        </div> -->
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer bg-black text-white py-4 fixed bottom-0 w-full z-50">
+        <div class="container mx-auto text-center">
+            <p>&copy; 2023 Your Company. All rights reserved.</p>
+        </div>
+    </div>
+</body>
+</html>
