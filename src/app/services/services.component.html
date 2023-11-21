@@ -4,55 +4,137 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.7/dist/tailwind.min.css" rel="stylesheet">
-    <title>Header with Tailwind CSS</title>
+    <title>Services - PrompT</title>
     <style>
         body {
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-
-        .content-wrapper {
-            flex-grow: 1;
-            background-image: url('https://img.freepik.com/premium-photo/city-buildings-skyline-metropolitan-area_31965-7268.jpg');
-            background-repeat: no-repeat;
-            background-position: center center;
-            background-attachment: fixed;
-            background-size: cover;
+            margin: 0;
+            padding: 0;
         }
 
         .logo-img {
             max-height: 50px; /* Adjust the height as needed */
         }
+
+        nav a {
+            color: #4CAF50;
+        }
+
+        header, footer {
+            position: fixed;
+            width: 100%;
+            background: black;
+            color: white;
+            padding: 1rem;
+            z-index: 1000;
+        }
+
+        header {
+            top: 0;
+        }
+
+        footer {
+            bottom: 0;
+        }
+
+        .card-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            padding: 80px 20px; /* Adjust padding to create space for header and footer */
+            overflow-y: auto;
+            height: calc(100vh - 160px); /* Adjust height to fill the remaining space */
+        }
+
+        .card {
+            width: 30%; /* Adjust the width of each card as needed */
+            margin: 20px;
+            border: 2px solid #ddd; /* Add a border for a card-like appearance */
+            border-radius: 8px; /* Optional: Add border radius for a rounded appearance */
+            overflow: hidden; /* Optional: Hide overflowing content within the card */
+            transition: all 0.3s ease; /* Smooth transition for opening/closing */
+        }
+
+        .card img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+
+        .card h2 {
+            padding: 10px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-align: center;
+            color: #333;
+            background-color: #f8f8f8; /* Optional: Add a background color for title contrast */
+            margin: 0;
+        }
+
+        .card p {
+            padding: 10px;
+            font-size: 1rem;
+            line-height: 1.4;
+            color: #555;
+        }
     </style>
 </head>
 <body>
-    <header class="bg-black py-4">
+    <header>
         <div class="container mx-auto flex justify-between items-center">
-            
-                <img src="your-logo-image-url.png" alt="Your Logo" class="logo-img">
-            
+            <img src="assets/images/propmt.jpg" alt="Your Logo" class="logo-img">
             <nav class="space-x-4">
                 <a href="/home" class="text-blue-400 hover:text-blue-600">Home</a>
-                <a href="/about" class="text-blue-400 hover:text-blue-600">About</a>
+                <a href="/about" class="text-blue-400 hover:text-blue-600">About Us</a>
                 <a href="/services" class="text-blue-400 hover:text-blue-600">Services</a>
-                <a href="/contact" class="text-blue-400 hover:text-blue-600">Contact</a>
+                <a href="/contact" class="text-blue-400 hover:text-blue-600">Contact Us</a>
             </nav>
         </div>
     </header>
-    
-    <!-- Content Section with Background Image -->
-    <div class="content-wrapper"></div>
-    
-<!-- <div class="content-wrapper" [style.background]="'url(./assets/images/promptLogo.jpg)'"></div> -->
+
+    <!-- Card Container -->
+    <div class="card-container">
+        <!-- Renter Services Card -->
+        <div class="card cursor-pointer" (click)="toggleCard('renters')">
+            <img src="https://placekitten.com/800/400" alt="Renter Services Image">
+            <h2>Renter Services</h2>
+            <div *ngIf="expandedCard === 'renters'">
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                </p>
+            </div>
+        </div>
+
+        <!-- Owner Services Card -->
+        <div class="card cursor-pointer" (click)="toggleCard('owners')">
+            <img src="https://placekitten.com/800/401" alt="Owner Services Image">
+            <h2>Owner Services</h2>
+            <div *ngIf="expandedCard === 'owners'">
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                </p>
+            </div>
+        </div>
+
+        <!-- Add more cards as needed -->
+    </div>
 
     <!-- Footer Section -->
-    <footer class="bg-black text-white py-4">
+    <footer>
         <div class="container mx-auto text-center">
             <p>&copy; 2023 Your Company. All rights reserved.</p>
-            
         </div>
     </footer>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const cards = document.querySelectorAll('.card');
+
+            cards.forEach(card => {
+                card.addEventListener('click', function () {
+                    this.classList.toggle('open');
+                });
+            });
+        });
+    </script>
 </body>
 </html>

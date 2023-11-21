@@ -5,17 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.7/dist/tailwind.min.css" rel="stylesheet">
-    <title>Header with Tailwind CSS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet">
+    <title>About Us - PrompT</title>
     <style>
         body {
             display: flex;
             flex-direction: column;
             min-height: 100vh;
+            font-family: 'Raleway', sans-serif; /* Use the chosen font */
+        }
+
+        nav a {
+            color: #4CAF50;
         }
 
         .content-wrapper {
             flex-grow: 1;
-           
             background-repeat: no-repeat;
             background-position: center center;
             background-attachment: fixed;
@@ -25,36 +30,148 @@
         .logo-img {
             max-height: 50px; /* Adjust the height as needed */
         }
+
+        .flex-container {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 60px; /* Adjust the margin to create space for the footer */
+        }
+        
+        .card {
+            width: 30%; /* Adjust the width of each card as needed */
+            margin-bottom: 20px;
+            border: 2px solid #ddd; /* Add a border for a card-like appearance */
+            border-radius: 8px; /* Optional: Add border radius for a rounded appearance */
+            overflow: hidden; /* Optional: Hide overflowing content within the card */
+            transition: height 0.3s ease; /* Smooth transition for opening/closing */
+            height: auto;
+        }
+        .card p li {
+    padding: 10px;
+    font-size: 1rem;
+    line-height: 1.4;
+    color: #555;
+    font-family: 'YourNewFont', sans-serif; /* Specify your desired font */
+}
+
+        .card img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+
+        .card h2 {
+            padding: 10px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-align: center;
+            color: #333;
+            background-color: #f8f8f8; /* Optional: Add a background color for title contrast */
+            margin: 0;
+        }
+
+        .card p {
+            padding: 10px;
+            font-size: 1rem;
+            line-height: 1.4;
+            color: #555;
+        }
+
+        .card.open {
+            height: 100%;
+        }
+
+        /* Sticky Footer Styles */
+        html, body {
+            height: 100%;
+            margin: 0;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .wrapper {
+            flex: 1;
+        }
+
+        footer {
+            margin-top: auto; /* Move the footer to the bottom */
+        }
     </style>
 </head>
 <body>
     <header class="bg-black py-4">
         <div class="container mx-auto flex justify-between items-center">
-            
-                <img src="your-logo-image-url.png" alt="Your Logo" class="logo-img">
-            
+            <img src="assets/images/propmt.jpg" alt="Your Logo" class="logo-img">
             <nav class="space-x-4">
                 <a href="/home" class="text-blue-400 hover:text-blue-600">Home</a>
-                <a href="/about" class="text-blue-400 hover:text-blue-600">About</a>
+                <a href="/about" class="text-blue-400 hover:text-blue-600">About Us</a>
                 <a href="/services" class="text-blue-400 hover:text-blue-600">Services</a>
-                <a href="/contact" class="text-blue-400 hover:text-blue-600">Contact</a>
+                <a href="/contact" class="text-blue-400 hover:text-blue-600">Contact Us</a>
             </nav>
         </div>
     </header>
     
-    <!-- Content Section with Background Image -->
-    <div class="content-wrapper"></div>
-    <p><i class="fa-brands fa-instagram"></i></p>
-    
-<!-- <div class="content-wrapper" [style.background]="'url(./assets/images/promptLogo.jpg)'"></div> -->
+    <!-- about.component.html -->
+
+    <div class="container mx-auto p-8 text-white flex-container">
+        <!-- About Us Card -->
+        <div class="card cursor-pointer" (click)="toggleCard('aboutUs')">
+            <img src="https://images.pexels.com/photos/2284169/pexels-photo-2284169.jpeg?cs=srgb&dl=pexels-maarten-van-den-heuvel-2284169.jpg&fm=jpg" alt="About Us Image">
+            <h2>About Us</h2>
+            <div *ngIf="expandedCard === 'aboutUs'">
+                <p>
+                    At Prop-T, we are your premier destination for rental solutions. With a sole focus on providing exceptional rental properties and services, we are your trusted partner in finding the perfect rental home.
+                </p>
+            </div>
+        </div>
+
+        <!-- Our Commitment Card -->
+        <div class="card cursor-pointer" (click)="toggleCard('ourCommitment')">
+            <img src="https://img.freepik.com/free-photo/colleagues-holding-hands-together_23-2147710871.jpg" alt="Our Commitment Image">
+            <h2>Our Commitment</h2>
+            <div *ngIf="expandedCard === 'ourCommitment'">
+                <p>
+                    Our commitment is to make the rental process smooth, efficient, and satisfying for both tenants and property owners. We understand that finding the right rental property is not just about a place to live; it's about finding a place to call home.
+                </p>
+            </div>
+        </div>
+
+        <!-- Why Choose Us Card -->
+        <div class="card cursor-pointer" (click)="toggleCard('whyChooseUs')">
+            <img src="https://img.freepik.com/premium-photo/why-choose-us_220873-5578.jpg" alt="Why Choose Us Image">
+            <h2>Why Choose Us?</h2>
+            <div *ngIf="expandedCard === 'whyChooseUs'">
+                <ul>
+                    <li><strong>Diverse Listings:</strong> We offer a wide range of rental properties, from apartments and houses to commercial spaces, ensuring you'll find what you're looking for.</li>
+                    <li><strong>Expert Guidance:</strong> Our team of experts is dedicated to helping you navigate the rental market, making the process as stress-free as possible.</li>
+                    <li><strong>Tenant and Landlord Support:</strong> We bridge the gap between renters and property owners, providing peace of mind and support for all parties.</li>
+                    <li><strong>Transparent Transactions:</strong> We believe in clear and honest dealings, with no hidden surprises in the rental process.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
 
     <!-- Footer Section -->
+    <div class="wrapper"></div>
     <footer class="bg-black text-white py-4">
         <div class="container mx-auto text-center">
             <p>&copy; 2023 Your Company. All rights reserved.</p>
-        
         </div>
     </footer>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const cards = document.querySelectorAll('.card');
+    
+            cards.forEach(card => {
+                card.addEventListener('click', function () {
+                    this.classList.toggle('open');
+                });
+            });
+        });
+    </script>
 </body>
 </html>
