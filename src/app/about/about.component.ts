@@ -5,11 +5,11 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './about.component.html',
   styleUrls: ['./about.component.css']
 })
-export class AboutComponent implements OnInit {
+export class AboutComponent {
+  expandedCard: string | null = null;
 
-  constructor() { }
-
-  ngOnInit(): void {
+  toggleCard(cardName: string): void {
+    this.expandedCard = this.expandedCard === cardName ? null : cardName;
   }
 
 }
